@@ -1,0 +1,64 @@
+# XBMC Media Center language file
+# Addon Name: Binge Organizer
+# Addon id: script.video.binge
+# Addon version: 0.0.1
+# Addon Provider: Birger Jesch
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: <EMAIL@ADRESS>\n"
+"POT-Creation-Date: 2019-05-15 10:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "#32000"
+msgid "Binge Organizer"
+msgstr "Binge Organizer"
+
+msgctxt "#32001"
+msgid "already played"
+msgstr "bereits abgespielt"
+
+msgctxt "#32002"
+msgid "not played yet"
+msgstr "noch nicht abgespielt"
+
+msgctxt "#32003"
+msgid "Playing Title %s of %"
+msgstr "Spiele Titel %s von %s"
+
+msgctxt "#32004"
+msgid "There isn't a Title in the Binge List. Please add at least one Title into the Binge List using the Context Menu of Views within Movies, TV Shows or Videos."
+msgstr "Es befindet sich kein Titel in der Bingeliste. Füge wenigstens einen Titel über das Kontextmenü in den Ansichten für Filme, Sreien oder Videos hinzu."
+
+# Context menues
+
+msgctxt "#32010"
+msgid "Add to Binge List"
+msgstr "Zur Bingeliste hinzufügen"
+
+msgctxt "#32011"
+msgid "Play/Manage Binge List..."
+msgstr "Bingeliste abspielen/verwalten..."
+
+msgctxt "#32012"
+msgid "Play all"
+msgstr "Bingeliste abspielen"
+
+msgctxt "#32013"
+msgid "Play List from Entry above"
+msgstr "ab Eintrag aufwärts abspielen"
+
+msgctxt "#32014"
+msgid "Toggle Play Status of Entry"
+msgstr "Abspielstatus umschalten"
+
+msgctxt "#32015"
+msgid "Clear Binge List"
+msgstr "Bingeliste löschen"

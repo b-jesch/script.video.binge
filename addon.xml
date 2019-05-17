@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<addon id="script.video.binge" name="Binge Organizer" provider-name="Birger Jesch" version="0.0.1">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0"/>
+        <import addon="xbmc.json" version="6.20.0"/>
+    </requires>
+    <extension point="xbmc.service" library="service.py" start="login" />
+    <extension point="xbmc.python.script" library="handler.py" />
+    <extension point="kodi.context.item" library="sm_0.py">
+            <menu id="kodi.core.main">
+                <item library="sm_0.py">
+                    <label>32010</label>
+                    <visible>Window.IsVisible(videos)</visible>
+                </item>
+                <menu>
+                    <label>32011</label>
+                    <item library="sm_1.py">
+                        <label>32012</label>
+                        <visible>Window.IsVisible(videos)</visible>
+                    </item>
+                    <item library="sm_2.py">
+                        <label>32013</label>
+                        <visible>Window.IsVisible(videos)</visible>
+                    </item>
+                    <item library="sm_3.py">
+                        <label>32014</label>
+                        <visible>Window.IsVisible(videos)</visible>
+                    </item>
+                    <item library="sm_4.py">
+                        <label>32015</label>
+                        <visible>Window.IsVisible(videos)</visible>
+                    </item>
+                </menu>
+            </menu>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">A binge organizer for movies and tv shows</summary>
+        <summary lang="de_DE">Ein Binge Organizer für Filme und Serien</summary>
+        <description lang="en_GB"></description>
+        <description lang="de_DE"></description>
+        <disclaimer lang="en_GB">Use at your own risk.</disclaimer>
+        <disclaimer lang="de_DE">Benutzung auf eigene Gefahr.</disclaimer>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <website></website>
+        <source>https://github.com/b-jesch/script.video.binge</source>
+        <news>
+        </news>
+        <assets>
+            <icon>resources/media/icon.png</icon>
+            <fanart></fanart>
+            <screenshot></screenshot>
+        </assets>
+        <email>birger.jesch@gmail.com</email>
+    </extension>
+</addon>
