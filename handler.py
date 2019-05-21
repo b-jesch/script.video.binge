@@ -71,13 +71,17 @@ class ContextHandler():
         jIO.write(self.bingelist)
         kl.writeLog('\'%s\' added as %s. item to binge list' % (bl_item['item'].get('title'), len(self.bingelist)))
 
-    def play_all(self):
+    def play_all(self, list_only=False):
 
-        if self.bl_count == 0:
+        if self.bl_count == 0 and not list_only:
             OSD.ok(ADDON_LOC(32000), ADDON_LOC(32004))
             return False
 
-        self.binge_player(entry=0)
+        if not list_only:
+            self.binge_player(entry=0)
+        else:
+            _li = self.create_bingelist()
+            _idx = OSD.select(ADDON_LOC(32000), _li, useDetails=True)
 
     def play_item(self):
 
@@ -110,18 +114,19 @@ class ContextHandler():
 if __name__ == '__main__':
     ch = ContextHandler()
     _li = []
-    for item in range(32012, 32016):
+    for item in range(32012, 32017):
         liz = xbmcgui.ListItem(label=ADDON_LOC(item))
         _li.append(liz)
     _idx = OSD.select(ADDON_LOC(32000), _li)
     if _idx == 0:
-        ch.play_all()
+        ch.play_all(list_only=True)
     elif _idx == 1:
-        ch.play_item()
+        ch.play_all()
     elif _idx == 2:
-        ch.mark_item()
+        ch.play_item()
     elif _idx == 3:
+        ch.mark_item()
+    elif _idx == 4:
         ch.clear_all()
     else:
         pass
-

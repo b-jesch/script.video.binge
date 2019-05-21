@@ -15,19 +15,19 @@
                 <menu>
                     <label>32011</label>
                     <item library="sm_1.py">
-                        <label>32012</label>
-                        <visible>Window.IsVisible(videos)</visible>
-                    </item>
-                    <item library="sm_2.py">
                         <label>32013</label>
                         <visible>Window.IsVisible(videos)</visible>
                     </item>
-                    <item library="sm_3.py">
+                    <item library="sm_2.py">
                         <label>32014</label>
                         <visible>Window.IsVisible(videos)</visible>
                     </item>
-                    <item library="sm_4.py">
+                    <item library="sm_3.py">
                         <label>32015</label>
+                        <visible>Window.IsVisible(videos)</visible>
+                    </item>
+                    <item library="sm_4.py">
+                        <label>32016</label>
                         <visible>Window.IsVisible(videos)</visible>
                     </item>
                 </menu>

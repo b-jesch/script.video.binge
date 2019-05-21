@@ -53,17 +53,21 @@ msgid "Play/Manage Binge List..."
 msgstr ""
 
 msgctxt "#32012"
-msgid "Play all"
+msgid "Show Binge List"
 msgstr ""
 
 msgctxt "#32013"
-msgid "Play List from Entry above"
+msgid "Play all"
 msgstr ""
 
 msgctxt "#32014"
-msgid "Toggle Play Status of Entry"
+msgid "Play List from Entry above"
 msgstr ""
 
 msgctxt "#32015"
+msgid "Toggle Play Status of Entry"
+msgstr ""
+
+msgctxt "#32016"
 msgid "Clear Binge List"
 msgstr ""
