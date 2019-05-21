@@ -33,6 +33,7 @@ class ContextHandler():
 
         player = xbmc.Player()
         monitor = xbmc.Monitor()
+        has_played = 0
         for idx in range(entry, len(self.bingelist)):
             bl_item = self.bingelist[idx]
             if not bl_item['item'].get('has_played', False):
@@ -49,9 +50,13 @@ class ContextHandler():
                         bl_item['item'].update({'position': player.getTime()})
                     else:
                         break
-
+                has_played += 1
                 bl_item['item'].update({'has_played': True})
                 jIO.write(self.bingelist)
+
+        if has_played < 1:
+            OSD.ok(ADDON_LOC(32000), ADDON_LOC(32005))
+            return False
 
     def add_item(self):
 
@@ -103,4 +108,20 @@ class ContextHandler():
         kl.writeLog('Binge list deleted')
 
 if __name__ == '__main__':
-    pass
+    ch = ContextHandler()
+    _li = []
+    for item in range(32012, 32016):
+        liz = xbmcgui.ListItem(label=ADDON_LOC(item))
+        _li.append(liz)
+    _idx = OSD.select(ADDON_LOC(32000), _li)
+    if _idx == 0:
+        ch.play_all()
+    elif _idx == 1:
+        ch.play_item()
+    elif _idx == 2:
+        ch.mark_item()
+    elif _idx == 3:
+        ch.clear_all()
+    else:
+        pass
+

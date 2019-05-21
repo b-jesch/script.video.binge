@@ -38,6 +38,10 @@ msgctxt "#32004"
 msgid "There isn't a Title in the Binge List. Please add at least one Title into the Binge List using the Context Menu of Views within Movies, TV Shows or Videos."
 msgstr ""
 
+msgctxt "#32005"
+msgid "All titles of the Bingelist have already been played. Change the state of the titles in the list or add new titles."
+msgstr ""
+
 # Context menues
 
 msgctxt "#32010"
