@@ -2,7 +2,7 @@
 # XBMC Media Center language file
 # Addon Name: Binge Organizer
 # Addon id: script.video.binge
-# Addon version: 0.0.1
+# Addon version: 0.0.2
 # Addon Provider: Birger Jesch
 msgid ""
 msgstr ""
@@ -42,6 +42,10 @@ msgctxt "#32005"
 msgid "All titles of the Bingelist have already been played. Change the state of the titles in the list or add new titles."
 msgstr ""
 
+msgctxt "#32006"
+msgid "Next title starts in %s seconds. Press OK to stop playing from Bingelist."
+msgstr ""
+
 # Context menues
 
 msgctxt "#32010"
@@ -70,4 +74,38 @@ msgstr ""
 
 msgctxt "#32016"
 msgid "Clear Binge List"
+msgstr ""
+
+# Settings
+
+msgctxt "#32020"
+msgid "Gap between Entries"
+msgstr ""
+
+msgctxt "#32021"
+msgid "Show Progressbar"
+msgstr ""
+
+msgctxt "#32022"
+msgid "Skip already played Entries"
+msgstr ""
+
+msgctxt "#32023"
+msgid "3 Seconds"
+msgstr ""
+
+msgctxt "#32024"
+msgid "5 Seconds"
+msgstr ""
+
+msgctxt "#32025"
+msgid "10 Seconds"
+msgstr ""
+
+msgctxt "#32026"
+msgid "15 Seconds"
+msgstr ""
+
+msgctxt "#32027"
+msgid "30 Seconds"
 msgstr ""

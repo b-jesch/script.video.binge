@@ -4,6 +4,12 @@ ADDON_PROFILE = xbmc.translatePath(ADDON.getAddonInfo('Profile'))
 jIO = jsonIO(ADDON_PROFILE, 'bingelist.json')
 kl = KodiLib()
 
+OSDProgress = xbmcgui.DialogProgress()
+
+gaps = [3, 5, 10, 15, 30]
+s_gap = gaps[kl.getAddonSetting('gap', NUM)]
+show_progress = kl.getAddonSetting('progress', BOOL)
+skip = kl.getAddonSetting('skip_played', BOOL)
 
 def bool2string(boolean, str4true, str4false):
     if boolean: return str4true
@@ -36,7 +42,20 @@ class ContextHandler():
         has_played = 0
         for idx in range(entry, len(self.bingelist)):
             bl_item = self.bingelist[idx]
-            if not bl_item['item'].get('has_played', False):
+            if not bl_item['item'].get('has_played', False) or not skip:
+
+                if show_progress:
+                    countdown = s_gap
+                    OSDProgress.create(ADDON_LOC(32000), ADDON_LOC(32006) % countdown)
+                    while countdown >= 0:
+                        OSDProgress.update(100 * countdown / s_gap, ADDON_LOC(32000), ADDON_LOC(32006) % countdown)
+                        xbmc.sleep(1000)
+                        countdown -= 1
+                        if OSDProgress.iscanceled():
+                            OSDProgress.close()
+                            return False
+                    OSDProgress.close()
+
 
                 # play video
                 kl.notify(ADDON_LOC(32003) % (idx + 1, self.bl_count), bl_item['item'].get('title'))
