@@ -132,20 +132,25 @@ class ContextHandler():
 
 if __name__ == '__main__':
     ch = ContextHandler()
-    _li = []
-    for item in range(32012, 32017):
-        liz = xbmcgui.ListItem(label=ADDON_LOC(item))
-        _li.append(liz)
-    _idx = OSD.select(ADDON_LOC(32000), _li)
-    if _idx == 0:
-        ch.play_all(list_only=True)
-    elif _idx == 1:
-        ch.play_all()
-    elif _idx == 2:
-        ch.play_item()
-    elif _idx == 3:
-        ch.mark_item()
-    elif _idx == 4:
-        ch.clear_all()
+    if ch.bl_count > 0:
+        _li = []
+        for item in range(32012, 32017):
+            liz = xbmcgui.ListItem(label=ADDON_LOC(item))
+            _li.append(liz)
+        _idx = OSD.select(ADDON_LOC(32000), _li)
+        if _idx == 0:
+            ch.play_all(list_only=True)
+        elif _idx == 1:
+            ch.play_all()
+        elif _idx == 2:
+            ch.play_item()
+        elif _idx == 3:
+            ch.mark_item()
+        elif _idx == 4:
+            ch.clear_all()
+        else:
+            pass
     else:
-        pass
+        OSD.ok(ADDON_LOC(32000), ADDON_LOC(32004))
+    del ch
+
