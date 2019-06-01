@@ -43,7 +43,7 @@ msgid "All titles of the Bingelist have already been played. Change the state of
 msgstr ""
 
 msgctxt "#32006"
-msgid "Next title starts in %s seconds. Press OK to stop playing from Bingelist."
+msgid "Next title starts in %s seconds. Press Cancel to stop playing from Bingelist."
 msgstr ""
 
 # Context menues
