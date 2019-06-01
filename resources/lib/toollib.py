@@ -155,4 +155,7 @@ class jsonIO(object):
         j_obj.close()
 
     def delete(self):
-        os.remove(self.path_and_file)
+        try:
+            os.remove(self.path_and_file)
+        except OSError as e:
+            KodiLib().writeLog(str(e), xbmc.LOGERROR)
