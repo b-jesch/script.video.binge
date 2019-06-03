@@ -44,19 +44,6 @@ class ContextHandler():
             bl_item = self.bingelist[idx]
             if not bl_item['item'].get('has_played', False) or not skip:
 
-                if show_progress:
-                    countdown = s_gap
-                    OSDProgress.create(ADDON_LOC(32000), ADDON_LOC(32006) % countdown)
-                    while countdown >= 0:
-                        OSDProgress.update(100 * countdown / s_gap, ADDON_LOC(32000), ADDON_LOC(32006) % countdown)
-                        xbmc.sleep(1000)
-                        countdown -= 1
-                        if OSDProgress.iscanceled():
-                            OSDProgress.close()
-                            return False
-                    OSDProgress.close()
-
-
                 # play video
                 kl.notify(ADDON_LOC(32003) % (idx + 1, self.bl_count), bl_item['item'].get('title'))
                 kl.writeLog('Playing \'%s\'' % bl_item['item'].get('title'))
@@ -72,6 +59,18 @@ class ContextHandler():
                 has_played += 1
                 bl_item['item'].update({'has_played': True})
                 jIO.write(self.bingelist)
+
+                if show_progress and idx < len(self.bingelist) - 1:
+                    countdown = s_gap
+                    OSDProgress.create(ADDON_LOC(32000), ADDON_LOC(32006) % countdown)
+                    while countdown >= 0:
+                        OSDProgress.update(100 * countdown / s_gap, ADDON_LOC(32000), ADDON_LOC(32006) % countdown)
+                        xbmc.sleep(1000)
+                        countdown -= 1
+                        if OSDProgress.iscanceled():
+                            OSDProgress.close()
+                            return False
+                    OSDProgress.close()
 
         if has_played < 1:
             OSD.ok(ADDON_LOC(32000), ADDON_LOC(32005))
