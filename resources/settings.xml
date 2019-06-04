@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-        <setting id="gap" type="enum" label="32020" default="2" lvalues="32023|32024|32025|32026<32027"/>
+        <setting id="pop_from_list" type="bool" label="32028" default="false" />
         <setting id="progress" type="bool" label="32021" default="true" />
+        <setting id="gap" type="enum" label="32020" default="2" lvalues="32023|32024|32025|32026|32027" enable="eq(-1,true)" />
         <setting id="skip_played" type="bool" label="32022" default="true" />
 </settings>

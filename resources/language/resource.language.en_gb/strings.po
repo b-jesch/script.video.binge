@@ -79,7 +79,7 @@ msgstr ""
 # Settings
 
 msgctxt "#32020"
-msgid "Gap between Entries"
+msgid "Duration of Progress Bar"
 msgstr ""
 
 msgctxt "#32021"
@@ -108,4 +108,8 @@ msgstr ""
 
 msgctxt "#32027"
 msgid "30 Seconds"
+msgstr ""
+
+msgctxt "#32028"
+msgid "Remove Title from Binge List after Playing"
 msgstr ""

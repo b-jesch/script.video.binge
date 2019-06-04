@@ -10,6 +10,7 @@ gaps = [3, 5, 10, 15, 30]
 s_gap = gaps[kl.getAddonSetting('gap', NUM)]
 show_progress = kl.getAddonSetting('progress', BOOL)
 skip = kl.getAddonSetting('skip_played', BOOL)
+pop_from_list = kl.getAddonSetting('pop_from_list', BOOL)
 
 def bool2string(boolean, str4true, str4false):
     if boolean: return str4true
@@ -71,10 +72,13 @@ class ContextHandler():
                             OSDProgress.close()
                             return False
                     OSDProgress.close()
+                else:
+                    xbmc.sleep(2000)
 
         if has_played < 1:
             OSD.ok(ADDON_LOC(32000), ADDON_LOC(32005))
             return False
+
 
     def add_item(self):
 
@@ -125,9 +129,25 @@ class ContextHandler():
             bl_item['item'].update({'has_played': not _current})
             jIO.write(self.bingelist)
 
+
     def clear_all(self):
         jIO.delete()
         kl.writeLog('Binge list deleted')
+
+
+    def del_items(self):
+        if not pop_from_list: return
+        cleared_list = []
+        for idx in range(0, len(self.bingelist)):
+            bl_item = self.bingelist[idx]
+            if bl_item['item'].get('has_played', False): continue
+            cleared_list.append(bl_item)
+
+        if len(cleared_list) > 0:
+            jIO.write(cleared_list)
+        else:
+            self.clear_all()
+
 
 if __name__ == '__main__':
     ch = ContextHandler()
@@ -149,6 +169,7 @@ if __name__ == '__main__':
             ch.clear_all()
         else:
             pass
+        ch.del_items()
     else:
         OSD.ok(ADDON_LOC(32000), ADDON_LOC(32004))
     del ch
