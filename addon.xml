@@ -1,36 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
-<addon id="script.video.binge" name="Binge Organizer" provider-name="Birger Jesch" version="0.0.7">
+<addon id="script.video.binge" name="Binge Organizer" provider-name="Birger Jesch" version="0.0.8">
     <requires>
         <import addon="xbmc.python" version="2.24.0"/>
         <import addon="xbmc.json" version="6.20.0"/>
     </requires>
     <extension point="xbmc.service" library="service.py" start="login" />
     <extension point="xbmc.python.script" library="handler.py">
-            <provides>video executable</provides>
+            <provides>video audio executable</provides>
     </extension>
     <extension point="kodi.context.item" library="sm_0.py">
             <menu id="kodi.core.main">
                 <item library="sm_0.py">
                     <label>32010</label>
-                    <visible>Window.IsVisible(videos)</visible>
+                    <visible>Window.IsVisible(videos) | Window.isVisible(music)</visible>
                 </item>
                 <menu>
                     <label>32011</label>
                     <item library="sm_1.py">
                         <label>32013</label>
-                        <visible>Window.IsVisible(videos)</visible>
+                        <visible>Window.IsVisible(videos) | Window.isVisible(music)</visible>
                     </item>
                     <item library="sm_2.py">
                         <label>32014</label>
-                        <visible>Window.IsVisible(videos)</visible>
+                        <visible>Window.IsVisible(videos) | Window.isVisible(music)</visible>
                     </item>
                     <item library="sm_3.py">
                         <label>32015</label>
-                        <visible>Window.IsVisible(videos)</visible>
+                        <visible>Window.IsVisible(videos) | Window.isVisible(music)</visible>
                     </item>
                     <item library="sm_4.py">
                         <label>32016</label>
-                        <visible>Window.IsVisible(videos)</visible>
+                        <visible>Window.IsVisible(videos) | Window.isVisible(music)</visible>
                     </item>
                 </menu>
             </menu>
