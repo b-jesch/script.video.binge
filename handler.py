@@ -4,8 +4,6 @@ ADDON_PROFILE = xbmc.translatePath(ADDON.getAddonInfo('Profile'))
 jIO = jsonIO(ADDON_PROFILE, 'bingelist.json')
 kl = KodiLib()
 
-OSDProgress = xbmcgui.DialogProgress()
-
 gaps = [3, 5, 10, 15, 30]
 s_gap = gaps[kl.getAddonSetting('gap', NUM)]
 show_progress = kl.getAddonSetting('progress', BOOL)
@@ -62,16 +60,10 @@ class ContextHandler():
                 jIO.write(self.bingelist)
 
                 if show_progress and idx < len(self.bingelist) - 1:
-                    countdown = s_gap
-                    OSDProgress.create(ADDON_LOC(32000), ADDON_LOC(32006) % countdown)
-                    while countdown >= 0:
-                        OSDProgress.update(100 * countdown / s_gap, ADDON_LOC(32000), ADDON_LOC(32006) % countdown)
-                        xbmc.sleep(1000)
-                        countdown -= 1
-                        if OSDProgress.iscanceled():
-                            OSDProgress.close()
-                            return False
-                    OSDProgress.close()
+                    pb = KlProgressBar(ADDON_LOC(32000), ADDON_LOC(32006) % s_gap,
+                                       duration=s_gap, steps=2*s_gap, reverse=True)
+                    if pb.show_progress(): return False
+
                 else:
                     xbmc.sleep(2000)
 

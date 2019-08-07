@@ -136,7 +136,7 @@ class jsonIO(object):
         self.path = path
         self.file = file
         if not os.path.exists(self.path): os.makedirs(self.path)
-        self.path_and_file = os.path.join(path, file)
+        self.path_and_file = os.path.join(self.path, self.file)
 
     def read(self):
         if os.path.exists(self.path_and_file):
@@ -159,3 +159,51 @@ class jsonIO(object):
             os.remove(self.path_and_file)
         except OSError as e:
             KodiLib().writeLog(str(e), xbmc.LOGERROR)
+
+
+class KlProgressBar(object):
+    '''
+    creates a dialog progressbar with optional reverse progress
+        :param header: heading line of progressbar
+        :param msg: additional countdown message
+        :param duration: duration of countdown
+        :param steps: amount of steps of the countdown, choosing a value of 2*duration is perfect (actualising every 500 msec)
+        :param reverse: reverse countdown (progressbar from 100 to 0)
+
+        :returns true if cancel button was pressed, otherwise false
+    '''
+
+    def __init__(self, header, msg, duration=5, steps=10, reverse=False):
+
+        self.header = header
+        self.msg = msg
+        self.timeout = 1000 * duration / steps
+        self.steps = 100 / steps
+        self.reverse = reverse
+        self.iscanceled = False
+
+        self.pb = xbmcgui.DialogProgress()
+
+        self.max = 0
+        if self.reverse: self.max = 100
+
+        self.pb.create(self.header, self.msg)
+        self.pb.update(self.max, self.msg)
+
+
+    def show_progress(self):
+
+        percent = 100
+        while percent >= 0:
+            self.pb.update(self.max, self.msg)
+            if self.pb.iscanceled():
+                self.iscanceled = True
+                break
+
+            percent -= self.steps
+            self.max = 100 - percent
+            if self.reverse: self.max = percent
+            xbmc.sleep(self.timeout)
+
+        self.pb.close()
+        return self.iscanceled
