@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
-<addon id="script.video.binge" name="Binge Organizer" provider-name="Birger Jesch" version="0.0.9">
+<addon id="script.video.binge" name="Binge Organizer" provider-name="Birger Jesch" version="0.0.12">
     <requires>
-        <import addon="xbmc.python" version="2.24.0"/>
+        <import addon="xbmc.python" version="2.26.0"/>
         <import addon="xbmc.json" version="6.20.0"/>
     </requires>
     <extension point="xbmc.service" library="service.py" start="login" />
@@ -36,22 +36,20 @@
             </menu>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary lang="en_GB">A binge organizer for movies and tv shows</summary>
-        <summary lang="de_DE">Ein Binge Organizer für Filme und Serien</summary>
-        <description lang="en_GB">Time to Binge? Organize your Movies or TV Shows for playing all in a row to create a great binge event for You and your friends.</description>
-        <description lang="de_DE">Zeit zm Bingen? Organisiere Deine Filme und Serien in der Bingeliste, die dann hintereinander weg abgespielt wird. Gestalte tolle Binge Events für Dich und Deine Freunde.</description>
+        <summary lang="en_GB">Setup your binge event for movies, tv shows and music</summary>
+        <summary lang="de_DE">Erstelle Dein Binge-Event für Filme, Serien und Musik</summary>
+        <description lang="en_GB">Time to Binge? Organize your Movies, TV Shows and Music for playing all in a row to create a great binge event for You and your friends.</description>
+        <description lang="de_DE">Zeit zm Bingen? Organisiere Deine Filme, Serien und Musik in der Bingeliste, die dann hintereinander weg abgespielt wird. Gestalte tolle Binge Events für Dich und Deine Freunde.</description>
         <disclaimer lang="en_GB">Use at your own risk.</disclaimer>
         <disclaimer lang="de_DE">Benutzung auf eigene Gefahr.</disclaimer>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
         <website></website>
         <source>https://github.com/b-jesch/script.video.binge</source>
-        <news>
-- Fanart added
-        </news>
+        <news></news>
         <assets>
             <icon>resources/media/icon.png</icon>
-            <fanart></fanart>
+            <fanart>resources/media/fanart.jpg</fanart>
             <screenshot></screenshot>
         </assets>
         <email>birger.jesch@gmail.com</email>

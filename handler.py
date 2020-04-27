@@ -27,8 +27,8 @@ class ContextHandler():
         _idx = 0
         for bingeitem in self.bingelist:
             liz = xbmcgui.ListItem(label=bingeitem['item'].get('title', 'undefined'),
-                                   label2=bool2string(bingeitem['item'].get('has_played', False), ADDON_LOC(32001), ADDON_LOC(32002)),
-                                   iconImage=bingeitem['item'].get('thumb', xbmcgui.ICON_TYPE_VIDEOS))
+                                   label2=bool2string(bingeitem['item'].get('has_played', False), ADDON_LOC(32001), ADDON_LOC(32002)))
+            liz.setArt({'icon': bingeitem['item'].get('thumb', xbmcgui.ICON_TYPE_VIDEOS)})
             liz.setProperty('idx', str(_idx))
             _li.append(liz)
             _idx += 1
@@ -117,7 +117,6 @@ class ContextHandler():
             bl_item = self.bingelist[_idx]
             kl.writeLog('Toggle item at pos %s' % (_idx + 1))
             _current = bl_item['item'].get('has_played', False)
-            print str(_current)
             bl_item['item'].update({'has_played': not _current})
             jIO.write(self.bingelist)
 
