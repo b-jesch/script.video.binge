@@ -1,9 +1,3 @@
-# encoding=utf8
-
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
-
 import random
 import xbmcaddon
 import xbmc
@@ -60,7 +54,7 @@ class CryptDecrypt(object):
             return ''
         else:
             self.__key = ''
-            for i in range((len(self.passw) / 16) + 1):
+            for i in range(int(len(self.passw) / 16) + 1):
                 self.__key += ('%016d' % int(random.random() * 10 ** 16))
             self.__key = self.__key[:-2] + ('%02d' % len(self.passw))
             __tpw = self.passw.ljust(len(self.__key), 'a')
@@ -68,6 +62,7 @@ class CryptDecrypt(object):
             self.__token = "".join([chr(ord(__tpw[i]) ^ ord(self.__key[i])) for i in range(len(self.__key))])
             self.persist()
             return self.passw
+
 
 class OsRelease(object):
 
@@ -82,12 +77,13 @@ class OsRelease(object):
                     for _line in _file:
                         parameter, value = _line.split('=')
                         item[parameter] = value
-            except IOError, e:
+            except IOError as e:
                 KodiLib.writeLog(e.message, xbmc.LOGERROR)
 
         self.osname = item.get('NAME', 'unknown')
         self.osid = item.get('ID', 'unknown')
         self.osversion = item.get('VERSION_ID', 'unknown')
+
 
 class KodiLib(object):
     '''
@@ -109,8 +105,8 @@ class KodiLib(object):
         try:
             response = json.loads(xbmc.executeJSONRPC(json.dumps(querystring, encoding='utf-8')))
             if 'result' in response: return response['result']
-        except TypeError, e:
-            self.writeLog('Error executing JSON RPC: %s' % (e.message), xbmc.LOGERROR)
+        except TypeError as e:
+            self.writeLog('Error executing JSON RPC: %s' % (e), xbmc.LOGERROR)
         return False
 
     def getAddonSetting(self, setting, sType=STRING, multiplicator=1):
@@ -146,7 +142,7 @@ class jsonIO(object):
                 j_obj.close()
                 return jl
             except ValueError as e:
-                KodiLib().writeLog(e.message, xbmc.LOGERROR)
+                KodiLib().writeLog(e, xbmc.LOGERROR)
         return []
 
     def write(self, items):
@@ -177,8 +173,8 @@ class KlProgressBar(object):
 
         self.header = header
         self.msg = msg
-        self.timeout = 1000 * duration / steps
-        self.steps = 100 / steps
+        self.timeout = int(1000 * duration / steps)
+        self.steps = int(100 / steps)
         self.reverse = reverse
         self.iscanceled = False
 
