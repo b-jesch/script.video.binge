@@ -1,6 +1,6 @@
 from resources.lib.toollib import *
 
-ADDON_PROFILE = xbmc.translatePath(ADDON.getAddonInfo('Profile'))
+ADDON_PROFILE = xbmcvfs.translatePath(ADDON.getAddonInfo('Profile'))
 jIO = jsonIO(ADDON_PROFILE, 'bingelist.json')
 kl = KodiLib()
 
@@ -10,12 +10,13 @@ show_progress = kl.getAddonSetting('progress', BOOL)
 skip = kl.getAddonSetting('skip_played', BOOL)
 pop_from_list = kl.getAddonSetting('pop_from_list', BOOL)
 
+
 def bool2string(boolean, str4true, str4false):
     if boolean: return str4true
     return str4false
 
 
-class ContextHandler():
+class ContextHandler:
 
     def __init__(self):
         self.bingelist = jIO.read()
@@ -71,7 +72,6 @@ class ContextHandler():
             OSD.ok(ADDON_LOC(32000), ADDON_LOC(32005))
             return False
 
-
     def add_item(self):
 
         bl_item = dict()
@@ -120,12 +120,10 @@ class ContextHandler():
             bl_item['item'].update({'has_played': not _current})
             jIO.write(self.bingelist)
 
-
     def clear_all(self):
         jIO.delete()
         kl.writeLog('Binge list deleted')
         kl.notify(ADDON_NAME, ADDON_LOC(32007))
-
 
     def del_items(self):
         if not pop_from_list: return

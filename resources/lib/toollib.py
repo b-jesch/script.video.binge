@@ -2,6 +2,7 @@ import random
 import xbmcaddon
 import xbmc
 import xbmcgui
+import xbmcvfs
 import json
 import re
 import platform
@@ -21,14 +22,15 @@ STRING = 0
 BOOL = 1
 NUM = 2
 
+
 class CryptDecrypt(object):
-    '''
+    """
     :param passw: ID/Name of the associated password item in settings.xml
     :param key: ID of the associated key in settings, will be generated at first run
     :param token: ID of the token in settings, generated from password/key
     :return: decrypted password if password in settings is empty or *, else set password to '*' and generates key/token,
              stores password into settings.xml, key/token within userdata/addon_data/addon_id/settings.xml
-    '''
+    """
 
     def __init__(self, passw, key, token):
 
@@ -40,12 +42,10 @@ class CryptDecrypt(object):
         self.__token = ADDON.getSetting(token)
         self.__token_item = token
 
-
     def persist(self):
         ADDON.setSetting(self.__key_item, self.__key)
         ADDON.setSetting(self.__token_item, self.__token)
         ADDON.setSetting(self.__pw_item, '*')
-
 
     def crypt(self):
 
@@ -78,7 +78,7 @@ class OsRelease(object):
                         parameter, value = _line.split('=')
                         item[parameter] = value
             except IOError as e:
-                KodiLib.writeLog(e.message, xbmc.LOGERROR)
+                KodiLib.writeLog(xbmc.LOGERROR)
 
         self.osname = item.get('NAME', 'unknown')
         self.osid = item.get('ID', 'unknown')
@@ -86,14 +86,16 @@ class OsRelease(object):
 
 
 class KodiLib(object):
-    '''
+    """
     several Kodi routines and functions
-    '''
+    """
 
-    def __strToBool(self, par):
+    @staticmethod
+    def __strToBool(par):
         return True if par.upper() == 'TRUE' else False
 
-    def writeLog(self, message, level=xbmc.LOGDEBUG):
+    @staticmethod
+    def writeLog(message, level=xbmc.LOGDEBUG):
         try:
             xbmc.log('[%s %s]: %s' % (ADDON_ID, ADDON_VERSION, message), level)
         except Exception:
@@ -121,7 +123,8 @@ class KodiLib(object):
         else:
             return ADDON.getSetting(setting)
 
-    def notify(self, title, message, icon=xbmcgui.NOTIFICATION_INFO, hide=False):
+    @staticmethod
+    def notify(title, message, icon=xbmcgui.NOTIFICATION_INFO, hide=False):
         if not hide:
             OSD.notification(title, message, icon)
 
@@ -158,7 +161,7 @@ class jsonIO(object):
 
 
 class KlProgressBar(object):
-    '''
+    """
     creates a dialog progressbar with optional reverse progress
         :param header: heading line of progressbar
         :param msg: additional countdown message
@@ -167,7 +170,7 @@ class KlProgressBar(object):
         :param reverse: reverse countdown (progressbar from 100 to 0)
 
         :returns true if cancel button was pressed, otherwise false
-    '''
+    """
 
     def __init__(self, header, msg, duration=5, steps=10, reverse=False):
 
@@ -185,7 +188,6 @@ class KlProgressBar(object):
 
         self.pb.create(self.header, self.msg)
         self.pb.update(self.max, self.msg)
-
 
     def show_progress(self):
 

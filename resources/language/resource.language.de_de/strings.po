@@ -83,13 +83,17 @@ msgstr "Bingeliste löschen"
 
 # Settings
 
+msgctxt "#32019"
+msgid "Settings"
+msgstr "Einstellungen"
+
 msgctxt "#32020"
 msgid "Duration of Progress Bar"
 msgstr "Anzeigedauer der Fortschrittsanzeige"
 
 msgctxt "#32021"
-msgid "Show Progressbar"
-msgstr "Zeige Fortschrittsanzeige"
+msgid "Show Cancel Progressbar between Titles"
+msgstr "Zeige Fortschrittsanzeige für Abbruch zwischen den Titeln"
 
 msgctxt "#32022"
 msgid "Skip already played Entries"

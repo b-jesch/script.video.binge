@@ -84,12 +84,16 @@ msgstr ""
 
 # Settings
 
+msgctxt "#32019"
+msgid "Settings"
+msgstr ""
+
 msgctxt "#32020"
 msgid "Duration of Progress Bar"
 msgstr ""
 
 msgctxt "#32021"
-msgid "Show Progressbar"
+msgid "Show Cancel Progressbar between Titles"
 msgstr ""
 
 msgctxt "#32022"
