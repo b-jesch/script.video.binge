@@ -2,7 +2,6 @@ import random
 import xbmcaddon
 import xbmc
 import xbmcgui
-import xbmcvfs
 import json
 import re
 import platform
@@ -150,7 +149,7 @@ class jsonIO(object):
 
     def write(self, items):
         with open(self.path_and_file, 'w') as j_obj:
-            json.dump(items, j_obj, ensure_ascii=False)
+            json.dump(items, j_obj, ensure_ascii=False, indent=4, sort_keys=True)
         j_obj.close()
 
     def delete(self):

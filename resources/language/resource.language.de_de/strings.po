@@ -51,6 +51,10 @@ msgctxt "#32007"
 msgid "Binge list removed"
 msgstr "Bingeliste wurde gelöscht"
 
+msgctxt "#32008"
+msgid "Playing of Binge list completed"
+msgstr "Abspielen der Bingeliste abgeschlossen"
+
 # Context menues
 
 msgctxt "#32010"
@@ -78,7 +82,11 @@ msgid "Toggle Play Status of Entry"
 msgstr "Abspielstatus umschalten"
 
 msgctxt "#32016"
-msgid "Clear Binge List"
+msgid "Remove already played items"
+msgstr "Entferne bereits gespielte Einträge"
+
+msgctxt "#32017"
+msgid "Clear Binge list"
 msgstr "Bingeliste löschen"
 
 # Settings

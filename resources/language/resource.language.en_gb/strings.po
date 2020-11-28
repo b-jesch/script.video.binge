@@ -52,6 +52,10 @@ msgctxt "#32007"
 msgid "Binge list removed"
 msgstr ""
 
+msgctxt "#32008"
+msgid "Playing of Binge list completed"
+msgstr ""
+
 # Context menues
 
 msgctxt "#32010"
@@ -79,7 +83,11 @@ msgid "Toggle Play Status of Entry"
 msgstr ""
 
 msgctxt "#32016"
-msgid "Clear Binge List"
+msgid "Remove already played items"
+msgstr ""
+
+msgctxt "#32017"
+msgid "Clear Binge list"
 msgstr ""
 
 # Settings
