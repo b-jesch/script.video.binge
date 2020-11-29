@@ -46,6 +46,12 @@ msgctxt "#32006"
 msgid "Next title starts in %s seconds. Press Cancel to stop playing from Bingelist."
 msgstr ""
 
+# notificatons
+
+msgctxt "#32007"
+msgid "Binge list removed"
+msgstr ""
+
 msgctxt "#32008"
 msgid "Playing of Binge list completed"
 msgstr ""

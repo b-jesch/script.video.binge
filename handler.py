@@ -139,6 +139,7 @@ class ContextHandler():
     def clear_all(self):
         jIO.delete()
         kl.writeLog('Binge list deleted')
+        kl.notify(ADDON_NAME, ADDON_LOC(32007))
 
 
     def del_items(self):
