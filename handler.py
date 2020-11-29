@@ -23,7 +23,7 @@ class ContextHandler():
 
     def create_bingelist(self):
 
-        _li = []
+        _li = list()
         _idx = 0
         for bingeitem in self.bingelist:
             liz = xbmcgui.ListItem(label=bingeitem['item'].get('title', 'undefined'),
@@ -45,16 +45,30 @@ class ContextHandler():
 
                 # play video
                 kl.notify(ADDON_LOC(32003) % (idx + 1, self.bl_count), bl_item['item'].get('title'))
-                kl.writeLog('Playing \'%s\'' % bl_item['item'].get('title'))
+                kl.writeLog('Play %s' % bl_item['item'].get('title'))
+                kl.writeLog('Path %s' % bl_item['item'].get('path'))
                 player.play(bl_item['item'].get('path', None))
 
+                has_file = False
+                retries = 10
                 while not monitor.waitForAbort(2):
-                    if player.isPlaying():
-                        if bl_item['item'].get('total_time', 0) == 0:
-                            bl_item['item'].update({'total_time': player.getTotalTime()})
-                        bl_item['item'].update({'position': player.getTime()})
-                    else:
+
+                    try:
+                        if player.getPlayingFile():
+                            has_file = True
+                            if bl_item['item'].get('total_time', 0) == 0:
+                                bl_item['item'].update({'total_time': player.getTotalTime()})
+                            bl_item['item'].update({'position': player.getTime()})
+                            if has_file: kl.writeLog('Playing %s' % player.getPlayingFile())
+                    except RuntimeError:
+                        if has_file:
+                            kl.writeLog('Playing file was probably stopped')
+                            break
+                        retries -= 1
+                        if retries > 0: continue
+                        kl.writeLog('Timeout while trying to play a file')
                         break
+
                 has_played += 1
                 bl_item['item'].update({'has_played': True})
                 jIO.write(self.bingelist)
@@ -66,6 +80,7 @@ class ContextHandler():
 
                 else:
                     xbmc.sleep(2000)
+        kl.notify(ADDON_NAME, ADDON_LOC(32008))
 
         if has_played < 1:
             OSD.ok(ADDON_LOC(32000), ADDON_LOC(32005))
@@ -143,8 +158,8 @@ class ContextHandler():
 if __name__ == '__main__':
     ch = ContextHandler()
     if ch.bl_count > 0:
-        _li = []
-        for item in range(32012, 32017):
+        _li = list()
+        for item in range(32012, 32018):
             liz = xbmcgui.ListItem(label=ADDON_LOC(item))
             _li.append(liz)
         _idx = OSD.select(ADDON_LOC(32000), _li)
@@ -157,11 +172,12 @@ if __name__ == '__main__':
         elif _idx == 3:
             ch.mark_item()
         elif _idx == 4:
+            ch.del_items()
+        elif _idx == 5:
             ch.clear_all()
         else:
             pass
-        ch.del_items()
     else:
-        OSD.ok(ADDON_LOC(32000), ADDON_LOC(32004))
+         OSD.ok(ADDON_LOC(32000), ADDON_LOC(32004))
     del ch
 

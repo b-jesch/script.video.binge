@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
-<addon id="script.video.binge" name="Binge Organizer" provider-name="Birger Jesch" version="0.0.12">
+<addon id="script.video.binge" name="Binge Organizer" provider-name="Birger Jesch" version="0.0.13">
     <requires>
         <import addon="xbmc.python" version="2.26.0"/>
         <import addon="xbmc.json" version="6.20.0"/>
@@ -32,14 +32,18 @@
                         <label>32016</label>
                         <visible>Window.IsVisible(videos) | Window.isVisible(music)</visible>
                     </item>
+                    <item library="sm_5.py">
+                        <label>32017</label>
+                        <visible>Window.IsVisible(videos) | Window.isVisible(music)</visible>
+                    </item>
                 </menu>
             </menu>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary lang="en_GB">Setup your binge event for movies, tv shows and music</summary>
-        <summary lang="de_DE">Erstelle Dein Binge-Event für Filme, Serien und Musik</summary>
-        <description lang="en_GB">Time to Binge? Organize your Movies, TV Shows and Music for playing all in a row to create a great binge event for You and your friends.</description>
-        <description lang="de_DE">Zeit zm Bingen? Organisiere Deine Filme, Serien und Musik in der Bingeliste, die dann hintereinander weg abgespielt wird. Gestalte tolle Binge Events für Dich und Deine Freunde.</description>
+        <summary lang="en_GB">Setup your binge event for movies, tv shows, streams and music</summary>
+        <summary lang="de_DE">Erstelle Dein Binge-Event für Filme, Serien, Streams und Musik</summary>
+        <description lang="en_GB">Time to Binge? Organize your Movies, TV Shows, Streams and Music for playing all in a row to create a great binge event for You and your friends.</description>
+        <description lang="de_DE">Zeit zm Bingen? Organisiere Deine Filme, Serien, Streams und Musik in der Bingeliste, die dann hintereinander weg abgespielt wird. Gestalte tolle Binge Events für Dich und Deine Freunde.</description>
         <disclaimer lang="en_GB">Use at your own risk.</disclaimer>
         <disclaimer lang="de_DE">Benutzung auf eigene Gefahr.</disclaimer>
         <platform>all</platform>

@@ -45,6 +45,10 @@ msgctxt "#32006"
 msgid "Next title starts in %s seconds. Press Cancel to stop playing from Bingelist."
 msgstr "Der nächste Titel startet in %s Sekunden. Drücke Abbrechen, um das Abspielen der Bingeliste zu beenden."
 
+msgctxt "#32008"
+msgid "Playing of Binge list completed"
+msgstr "Abspielen der Bingeliste abgeschlossen"
+
 # Context menues
 
 msgctxt "#32010"
@@ -72,7 +76,11 @@ msgid "Toggle Play Status of Entry"
 msgstr "Abspielstatus umschalten"
 
 msgctxt "#32016"
-msgid "Clear Binge List"
+msgid "Remove already played items"
+msgstr "Entferne bereits gespielte Einträge"
+
+msgctxt "#32017"
+msgid "Clear Binge list"
 msgstr "Bingeliste löschen"
 
 # Settings
